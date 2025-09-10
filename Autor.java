@@ -1,12 +1,12 @@
-import javax.xml.crypto.Data;
+import java.util.Date;
 
 public class Autor {
 
     private int id = 0;
     private String nome;
-    private Data dataNascimento;
+    private Date dataNascimento;
 
-    public Autor(int id, String nome, Data dataNascimento){
+    public Autor(String nome, Date dataNascimento){
         this.id = id++;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -14,10 +14,6 @@ public class Autor {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -28,11 +24,11 @@ public class Autor {
         this.nome = nome;
     }
 
-    public Data getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Data dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
