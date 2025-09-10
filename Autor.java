@@ -2,12 +2,13 @@ import java.util.Date;
 
 public class Autor {
 
-    private int id = 0;
+    private int id;
+    private static int contadorId = 1;
     private String nome;
     private Date dataNascimento;
 
     public Autor(String nome, Date dataNascimento){
-        this.id = id++;
+        this.id = contadorId++;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
     }

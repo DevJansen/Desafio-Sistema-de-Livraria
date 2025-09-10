@@ -3,7 +3,8 @@ import java.util.Date;
 
 public class Livro {
 
-    private int id = 0;
+    private int id;
+    private static int contadorId = 1;
     private String titulo;
     private Autor autor;
     private boolean disponivel;
@@ -11,7 +12,7 @@ public class Livro {
     private Date dataAtualizacao;
 
     public Livro(String titulo, Autor autor){
-        this.id = id++;
+        this.id = contadorId++;
         this.titulo = titulo;
         this.autor = autor;
         this.disponivel = true;
@@ -36,10 +37,6 @@ public class Livro {
         return autor;
     }
 
-    public void setAutor(Autor autor) {
-        this.autor = autor;
-    }
-
     public boolean isDisponivel() {
         return disponivel;
     }
@@ -50,10 +47,6 @@ public class Livro {
 
     public Date getDataCadastro() {
         return dataCadastro;
-    }
-
-    public void setDataCadastro(Date dataCadastro) {
-        this.dataCadastro = dataCadastro;
     }
 
     @Override
