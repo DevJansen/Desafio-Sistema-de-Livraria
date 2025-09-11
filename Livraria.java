@@ -56,7 +56,7 @@ public class Livraria {
 
      //metodos para gerencia autores
     //metodo para add autor
-    public void adicionarAutores(Autor autor){
+    public void adicionarAutor(Autor autor){
         autores.add(autor);
     }
 
