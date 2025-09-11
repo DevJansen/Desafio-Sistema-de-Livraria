@@ -8,14 +8,14 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         // Adicionando autores
-        Autor autor1 = new Autor( "J.K. Rowling", new Date());
-        Autor autor2 = new Autor( "J.R.R. Tolkien", new Date());
+        Autor autor1 = new Autor("J.K. Rowling", new Date());
+        Autor autor2 = new Autor("J.R.R. Tolkien", new Date());
 
         livraria.adicionarAutor(autor1);
         livraria.adicionarAutor(autor2);
 
         // Adicionando livros
-        Livro livro1 = new Livro( "Harry Potter e a Pedra Filosofal", autor1);
+        Livro livro1 = new Livro("Harry Potter e a Pedra Filosofal", autor1);
         Livro livro2 = new Livro("O Senhor dos Anéis: A Sociedade do Anel", autor2);
         Livro livro3 = new Livro("Harry Potter e a Câmara Secreta", autor1);
 
@@ -23,51 +23,55 @@ public class Main {
         livraria.adicionarLivro(livro2);
         livraria.adicionarLivro(livro3);
 
+        System.out.println(" ");
+        System.out.println("-----------------------------");
+        System.out.println("----- Livraria Nova Alfa -----");
+        System.out.println("-----------------------------");
+        System.out.println(" ");
+        System.out.println("Deseja ver os livros disponíveis? (sim/nao)");
 
+        String resposta = sc.nextLine().toLowerCase();
 
-            System.out.println("Deseja ver os livros disponíveis? (sim/nao)");
-            String resposta = sc.nextLine().toLowerCase();
+        if (resposta.equals("sim")) {
 
-            if(resposta.equals("sim")){
+            List<Livro> livrosDisponiveis = livraria.listarLivrosDisponivel();
 
-                List<Livro> livrosDisponiveis = livraria.listarLivrosDisponivel();
-
-                if (livrosDisponiveis.isEmpty()) {
-                    System.out.println("Não há livros disponíveis no momento.");
-                } else {
-                    System.out.println("Livros disponíveis:");
-                    for (Livro livro : livrosDisponiveis) {
-                        System.out.println(livro.getId() + ": " + livro.getTitulo());
-                    }
-
-                    System.out.println("Digite o ID do livro que você deseja emprestar:");
-                    int idLivro = sc.nextInt();
-                    sc.nextLine();
-
-                    Livro livroSelecionado = livraria.buscarLivroPorId(idLivro);
-
-                    if (livroSelecionado != null && livroSelecionado.isDisponivel()) {
-                        System.out.println("Digite seu nome:");
-                        String nomeUsuario = sc.nextLine();
-
-                        livraria.emprestarLivro(livroSelecionado, nomeUsuario);
-                        System.out.println("O livro " + livroSelecionado.getTitulo() + " foi emprestado para " + nomeUsuario);
-                    } else {
-                        System.out.println("Livro não encontrado ou não disponível para empréstimo.");
-                    }
+            if (livrosDisponiveis.isEmpty()) {
+                System.out.println("Não há livros disponíveis no momento.");
+            } else {
+                System.out.println("Livros disponíveis:");
+                for (Livro livro : livrosDisponiveis) {
+                    System.out.println(livro.getId() + ": " + livro.getTitulo());
                 }
 
-            } else if (resposta.equals("nao")) {
+                System.out.println("Digite o ID do livro que você deseja emprestar:");
+                int idLivro = sc.nextInt();
+                sc.nextLine();
 
-                System.out.println("Obrigado por utilizar o sistema da biblioteca.");
+                Livro livroSelecionado = livraria.buscarLivroPorId(idLivro);
 
-            }else {
+                if (livroSelecionado != null && livroSelecionado.isDisponivel()) {
+                    System.out.println("Digite seu nome:");
+                    String nomeUsuario = sc.nextLine();
 
-                System.out.println("Resposta inválida. Por favor, responda com 'sim' ou 'não'.");
-
+                    livraria.emprestarLivro(livroSelecionado, nomeUsuario);
+                    System.out.println("O livro " + livroSelecionado.getTitulo() + " foi emprestado para " + nomeUsuario);
+                } else {
+                    System.out.println("Livro não encontrado ou não disponível para empréstimo.");
+                }
             }
 
-            sc.close();
+        } else if (resposta.equals("nao")) {
+
+            System.out.println("Obrigado por utilizar o sistema da biblioteca.");
+
+        } else {
+
+            System.out.println("Resposta inválida. Por favor, responda com 'sim' ou 'não'.");
+
+        }
+
+        sc.close();
 
 
     }
